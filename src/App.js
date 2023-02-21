@@ -1,60 +1,29 @@
 import React from "react";
 
-class Square extends React.component {
-    render() {
-        return(
-            <button className={"square"}>
-
-            </button>
-        )
-    }
-}
-
-class Board extends React.component {
-    renderSquare(i) {
-        return <Square/>
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            age: ''
+        }
+        this.handleClick = this.handleClick.bind(this)
     }
 
-    render() {
-        const status = 'Следующий игрок 0'
+    handleClick() {
+        this.setState({name: 'Geeks', age: 15})
+    }
 
-        return(
+    render() {
+        return (
             <div>
-                <div className={"status"}>{status}</div>
-                <div className={"board5-row"}>
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className={"board5-row"}>
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className={"board5-row"}>
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
+                <p>Имя:{this.state.name}, возраст:{this.state.age}</p>
+                <button onClick={this.handleClick}>Нажми на меня</button>
             </div>
         )
     }
 }
 
-class Game extends React.component {
-    render() {
-        return(
-            <div className={"game"}>
-                <div className={"game-board"}>
-                    <Board/>
-                </div>
-                <div className={"game-info"}>
-                    <div></div>
-                    <ol></ol>
-                </div>
-            </div>
-        )
-    }
-}
 
-export default Game;
+
+export default App;
